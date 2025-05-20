@@ -34,20 +34,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format({async = false})
 	end
 })
--- minimal autocompletion config
-local cmp = require('cmp')
-
-cmp.setup({
-  sources = {
-    {name = 'nvim_lsp'},
-  },
-  snippet = {
-    expand = function(args)
-      -- You need Neovim v0.10 to use vim.snippet
-      vim.snippet.expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({}),
-})
 -- enable go language server
 vim.lsp.enable('gopls')
