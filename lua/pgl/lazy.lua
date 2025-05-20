@@ -28,6 +28,18 @@ require('lazy').setup({
 	{
 		'rose-pine/neovim',
 		config = function()
+			require('rose-pine').setup({
+				variant = "auto", -- auto, main, moon, or dawn
+				dark_variant = "main", -- main, moon, or dawn
+				dim_inactive_windows = true,
+				extend_background_behind_borders = true,
+
+				styles = {
+					bold = true,
+					italic = false,
+					transparency = true,
+				}	
+			})
 			vim.cmd('colorscheme rose-pine')
 		end,
 	},
@@ -57,4 +69,24 @@ require('lazy').setup({
 	{ 'neovim/nvim-lspconfig', tag = 'v1.8.0', pin = true},
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/nvim-cmp' },
+
+	-- file tree
+	{ 
+		'nvim-tree/nvim-tree.lua', 
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			-- disable netrw at the very start of your init.lua
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+
+			-- optionally enable 24-bit colour
+			vim.opt.termguicolors = true
+
+			require("nvim-tree").setup {}
+		end,
+	},
 })
