@@ -18,7 +18,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     -- scroll up and down the documentation window
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),   
+    ['<C-d>'] = cmp.mapping.scroll_docs(4)
   }),
 	sources = {
 		{ name = "nvim_lsp" }

@@ -64,11 +64,19 @@ require('lazy').setup({
 
 	-- Git
 	{ 'tpope/vim-fugitive' },
+	{ 'sindrets/diffview.nvim', lazy = false }, 
 
 	-- LSP plugins (add your LSP plugins here)
 	{ 'neovim/nvim-lspconfig', tag = 'v1.8.0', pin = true},
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/nvim-cmp' },
+
+	-- java; 
+	{ 'nvim-java/nvim-java',
+		dependencies = {
+			{ "mason-org/mason.nvim", version = "1.11.0" },
+			{ "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
+	}},
 
 	-- file tree
 	{ 
