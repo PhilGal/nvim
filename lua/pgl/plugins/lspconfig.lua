@@ -1,8 +1,7 @@
 return {
 	-- LSP plugins (add your LSP plugins here)
-	{ 'neovim/nvim-lspconfig', 
-	config = function() 
-
+	{ 'neovim/nvim-lspconfig',
+	config = function()
 		-- Reserve a space in the gutter
 		-- This will avoid an annoying layout shift in the screen
 		vim.opt.signcolumn = 'yes'
@@ -42,6 +41,19 @@ return {
 				vim.diagnostic.open_float(nil, { focus = false })
 			end,
 		})
+
+		-- Should be last! Setup lsp servers
+		local lspconfig = require('lspconfig')
+		local servers = {
+			jdtls = require('pgl.plugins.lsp.java'),
+			lua_ls = require('pgl.plugins.lsp.lua')
+			-- go = require('pgl.lsp.go'), -- например
+		}
+		for server, config in pairs(servers) do
+			print(server)
+			lspconfig[server].setup(config)
+		end
+
 	end
 },
 }

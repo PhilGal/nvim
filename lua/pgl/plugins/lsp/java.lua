@@ -2,9 +2,9 @@ local home = vim.fn.expand("~")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/.local/share/nvim/jdtls/workspaces/" .. project_name
 
-require("lspconfig").jdtls.setup({
-  cmd = { "jdtls" },
-  -- root_dir = require("lspconfig").util.root_pattern(".git", "mvnw", "gradlew"),
+return {
+  cmd = { "jdtls", "-data", workspace_dir },
+  root_dir = require("lspconfig").util.root_pattern(".git", "pom.xml"),
   settings = {
     java = {
       configuration = {
@@ -17,6 +17,5 @@ require("lspconfig").jdtls.setup({
         },
       },
     },
-    workspace_dir = workspace_dir,
   },
-})
+}
